@@ -16,13 +16,14 @@ class QuestionsController < ApplicationController
 		else
 			@questions = Question.all.order(:created_at).limit(50).reverse
 		end 
-    	json_response(@questions)
-  	end
+    	render json: @questions, each_serializer: AllQuestionSerializer
+  end
+
 
   	# GET /questions/:id
   	def show
 
-    	json_response(@question.por_id(params['id']))
+      render json: @question.por_id(params['id']), each_serializer: CompoundDocumentSerializer
   	end
 
   	# POST /questions
@@ -65,8 +66,7 @@ class QuestionsController < ApplicationController
 
   	private
 
-  	def question_params
-    	#parametros que llegaran por mas que no se envien 
+  	def question_paramsn 
     	params.permit(:title, :description)
   	end
 
@@ -76,7 +76,6 @@ class QuestionsController < ApplicationController
   	end
 
   	def set_user
-  		#se tiene que llamar "X-QA-Key"
     	@user = User.find_by!(token: request.headers['X-QA-Key'])
     	json_response({}, :unauthorized) if !@user.token_valido?
     	json_response({}, :unauthorized) if !@user.my_user?(@user)
