@@ -11,4 +11,10 @@
 * En el directorio del proyecto se ejecuta "bundle exec rails s", se ejecutará la aplicacion en localhost puerto 3000.
 * Luego de ejecutar esto ya se puede utilizar la app en http://localhost:3000 
 
+# Testing:
+
+*Para ejecutar TODOS los test se ejecuta sobre el directorio del proyecto "bundle exec rails test"
+*Para ejecutar UN test en particular "bundle exec rails test *nombre del archivo*.rb"
+
+
 
