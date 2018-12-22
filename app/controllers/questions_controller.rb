@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
 			@questions = Question.latest.limit(50)
 		end 
     	render json: @questions, each_serializer: AllQuestionSerializer
-    end
+  end
 
 
   	# GET /questions/:id
