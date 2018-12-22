@@ -1,7 +1,16 @@
 require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+   	setup do
+   		@Answer= answers(:one)
+  	end
+
+
+  	test "Se debe eliminar la pregunta" do
+    	assert_difference("Answer.count",-1) do
+        	@Answer.destroy
+    	end
+  	end
+
 end

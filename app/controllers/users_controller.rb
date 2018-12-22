@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  	before_action :set_user, only: [:create]
-
   	# POST /users
   	def create
 
@@ -15,10 +13,6 @@ class UsersController < ApplicationController
   	def user_params
     	params.permit(:username, :password, :screen_name, :email)
  	end
-
-  	def set_user
-    	@user = User.find_by!(token: params[:token])
-  	end
 end
 
 

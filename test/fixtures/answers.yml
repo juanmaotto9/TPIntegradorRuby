@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  question: one
-  content: MyString
-  user: one
-  correct_answer: false
+    question: 1
+    content: Messi en 2014
+    user_id: 1
 
 two:
-  question: two
-  content: MyString
-  user: two
-  correct_answer: false
+    question: 2
+    content: cristiano ronaldo en 2013
+    user_id: 1
+
+three:
+    question: 3
+    content: Mbappe 2018
+    user_id: 1
+

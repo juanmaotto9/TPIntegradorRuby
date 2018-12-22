@@ -10,10 +10,10 @@ class AnswersController < ApplicationController
 
  	# POST /questions/:question_id/answers
   	def create
-  		if @question.status == true
+  		if @question.status 
   			json_response(@question, :unprocessable_entity)
   		else
-	   		@question.answers.create!(content: params[:content], user_id: @user.get_id)
+	   		@question.answers.create!(content: params[:content], user_id: @user.id)
 	    	json_response(@question, :created)
 		end
   	end
@@ -21,8 +21,8 @@ class AnswersController < ApplicationController
 	# DELETE /questions/:question_id/answers/:id
   	def destroy
   	
-  		if @question.my_user?(@user)
-  			if !@question.my_answer?(@answer.id)
+  		if @question.user == @user
+  			if !@question.answer_id == @answer.id
   				@answer.destroy
   				json_response(@answer)
   			else

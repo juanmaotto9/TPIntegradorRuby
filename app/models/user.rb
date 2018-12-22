@@ -4,18 +4,12 @@ class User < ApplicationRecord
 	has_secure_password
 	has_secure_token
 
-	after_initialize :init
-
 	validates_presence_of :username, :password_digest, :email
 	validates :email, uniqueness: true
 	validates :username, uniqueness: true
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
 
-	def init
-
-		#Para una futura inicializacion en caso de ser necesario
-	end
 
 	def update_token
 
@@ -32,11 +26,5 @@ class User < ApplicationRecord
 		#...sin embargo el time_token queda nulo.
 		#Entonces preguntado por .nil? me aseguro que el usuario haya iniciado sesion que es donde se le setea.	
 		((DateTime.now.to_time - self.time_token.to_time)/1.minutes < 30) if !self.time_token.nil? 
-	end
-
-	def get_id
-
-		#devuelve mi ID
-		self.id
 	end
 end
