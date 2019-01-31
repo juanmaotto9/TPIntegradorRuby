@@ -7,16 +7,21 @@ class QuestionsController < ApplicationController
 
   	# GET /questions
 	def index
-
-		if params['sort'] == "pending_first"
+    case params["sort"]
+		when "pending_first"
 			@questions = Question.pending_first.limit(50)
-		elsif params['sort'] == "needing_help"
-			@questions = Question.all.where(status: false).limit(50)
+
+		when "needing_help"
+			@questions = Question.needing_help.limit(50)
+
 		else
 			@questions = Question.latest.limit(50)
-		end 
-    	render json: @questions, each_serializer: AllQuestionSerializer
+		end
+
+    render json: @questions, each_serializer: AllQuestionSerializer
   end
+
+
 
 
   	# GET /questions/:id
