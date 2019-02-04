@@ -46,3 +46,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Gema para serializar
 gem 'active_model_serializers'
+
+#gema que usa heroku
+gem 'psql', group: :production

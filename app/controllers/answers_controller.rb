@@ -40,11 +40,6 @@ class AnswersController < ApplicationController
 	    params.permit(:content)
 	end
 
-	def set_user
-	    @user = User.find_by!(token: request.headers['X-QA-Key'])
-	    json_response({}, :unauthorized) if !@user.token_valido?
-	end
-
 	def set_question
 	    @question = Question.find(params[:question_id])
 	end
