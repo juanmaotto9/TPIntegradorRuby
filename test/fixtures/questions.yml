@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+hecha:
   title: "partidazo"
   description: "un gran partido entre river y boca"
-  status: false
-  user: 1
-  answer_id: 1
+  status: true
+  user: valido
+  updated_at: <%= DateTime.now %>
 
-two:
+sinhacer:
   title: "Dale campeon"
   description: "jugador campeon del mundo en el 2018"
   status: false
-  user: 1
-  answer_id: 3
+  user: valido
+  updated_at: <%= DateTime.yesterday %>
+
+
+  
+

@@ -8,6 +8,8 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.references :answer#, foreign_key: true
 
       t.timestamps
+
+      #las foreign_keys fueron comentadas junto a Lautaro para que funcione en heroku.
     end
   end
 end

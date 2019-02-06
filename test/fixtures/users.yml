@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+valido:
   username: "manuelottone"
   password_digest: "1234"
-  screen_name: "manu"
+  screen_name: manu
   email: "manu@gmail.com"
-  token: "qwerty"
+  token: "nada"
 
-two:
-  username: "messilionel"
-  password_digest: "1234"
-  screen_name: "messi"
+invalido:
+  username: "LionelMessi"
+  password_digest: "asdasd"
+  screen_name: "Lio"
   email: "messi@gmail.com"
-  token: "asdfgh"
+  token: "algo"
+
+
+
+
