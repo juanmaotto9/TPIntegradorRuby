@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-	#mediante el set_user chequeo, ademas de que exista un usuario, que tenga token valido
+
     before_action :set_user, only: [:create, :update, :resolve, :destroy]
 	before_action :set_question, only: [:show, :update,:resolve, :destroy]
 	
@@ -26,8 +26,11 @@ class QuestionsController < ApplicationController
 
   	# GET /questions/:id
   	def show
-
-        json_response(@question, serializer: CompoundDocumentSerializer)
+        if params[:respuestas] == 'si'   
+            json_response(@question, serializer: CompoundDocumentSerializer) 
+        else
+            json_response(@question)
+        end
   	end
 
   	# POST /questions
@@ -56,7 +59,7 @@ class QuestionsController < ApplicationController
 		      if !(@question.answers.count > 0)
                  @question.destroy
 		      else
-			     json_response("Esta pregunta tiene no puede eliminarse, ya que posee respuesta/s", :unprocessable_entity)
+			     json_response("Esta pregunta no puede eliminarse, ya que posee respuesta/s", :unprocessable_entity)
 		      end
         else
            json_response("No sos el creador de la pregunta", :unauthorized)

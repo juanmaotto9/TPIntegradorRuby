@@ -11,6 +11,7 @@ class AnswersController < ApplicationController
  	# POST /questions/:question_id/answers
   	def create
   		if @question.status 
+        #No se procesa ya que esta contestada.
   			json_response(@question, :unprocessable_entity)
   		else
 	   		@question.answers.create!(content: params[:content], user_id: @user.id)
